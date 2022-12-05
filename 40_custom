@@ -1,0 +1,10 @@
+#!/bin/sh
+exec tail -n +3 $0
+
+menuentry "Windows" {
+	insmod part_msdos
+	insmod fat
+	insmod ntfs
+	set root=(hd1,gpt1)
+	chainloader (${root})/EFI/Microsoft/Boot/bootmgfw.efi
+}
